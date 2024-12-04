@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "langgraph-text-2-sql"
+version = "0.1.0"
+description = ""
+authors = ["Allwyn Siluvainathan <asiluvai@akamai.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+langchain = "^0.3.9"
+langchain-community = "^0.3.9"
+langgraph = "^0.2.54"
+python-dotenv = "^1.0.1"
+streamlit = "^1.40.2"
+psycopg2-binary = "^2.9.10"
+langchain-openai = "^0.2.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
