@@ -1,8 +1,9 @@
+from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 from langchain_openai import ChatOpenAI
 
-from typing import List
+from typing import List, Optional
 
 from dotenv import load_dotenv, find_dotenv
 
@@ -23,8 +24,9 @@ class TableInfo(BaseModel):
     table_name: str = Field(description="Specifies the name of the table")
     description: str = Field(description="Provides a description/summary of the table")
     columns: List[ColumnInfo] = Field(description="Lists all the columns in the table")
-    relation_ship: str = Field(
-        description="Lists related tables, separated by commas, indicating relationships with this table"
+    relation_ship: Optional[str] = Field(
+        description="Lists related tables, separated by commas, indicating relationships with this table",
+        default=None,
     )
 
 
@@ -41,27 +43,28 @@ system_role = """
     You are a database schema analyzer and formatter. Your task is to analyze a given SQL DDL string containing definitions 
     for multiple tables and format it into a structured schema using the provided Pydantic model format. The input may 
     include additional lines that are not part of table definitions—these should be ignored.
-    
+
     ### Input:
     A string containing DDL statements for tables in SQL. Each table includes its name, columns, and optionally relationships or constraints.
-    
+
     ### Output:
     A valid Pydantic model representation of the schema, adhering to the following structure:
-    
+
     1. **`ColumnInfo`**:
        - `name`: Name of the column.
        - `type`: Data type of the column (e.g., VARCHAR, INT).
-       - `explanation`: Provide an explanation if available (from comments or constraints). If not available, please your own.
-    
+       - `explanation`: Provide an explanation if available (from comments or constraints). If not available, please your own. Must capture the foreign key relationship in detail
+
     2. **`TableInfo`**:
        - `table_name`: Name of the table.
        - `columns`: List of `ColumnInfo` for the table.
-       - `relation_ship`: Comma-separated related tables inferred from foreign keys. If none, set as `"None"`.
+       - `relation_ship`:
+           - A comma-separated list of directly related tables inferred from foreign keys.
        - `description`:provides a description/summary of the table
-    
+
     3. **`DatabaseSchema`**:
        - `tables`: List of all `TableInfo`.
-    
+
     ### Additional Notes:
     - Include only table definitions; ignore non-table lines.
     - Preserve column order from the DDL.

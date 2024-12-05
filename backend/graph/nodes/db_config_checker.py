@@ -7,7 +7,7 @@ from backend.graph.chains.db_connection_error_explainer import (
 )
 
 
-def db_config_checker(state: QueryState) -> Dict[str, str]:
+def db_config_checker(state: QueryState) -> Dict[str, any]:
     try:
         db_config = state["db_config"]
         conn = psycopg2.connect(
@@ -18,7 +18,7 @@ def db_config_checker(state: QueryState) -> Dict[str, str]:
             password=db_config.get("password"),
         )
         conn.close()
-        return {"is_error": "False"}
+        return {"is_error": False}
     except psycopg2.Error as e:
         error_message = str(e)
         result = db_connection_error_explain_chain.invoke({"error": error_message})

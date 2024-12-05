@@ -123,6 +123,21 @@ files = [
 frozenlist = ">=1.1.0"
 
 [[package]]
+name = "alt"
+version = "0.0.4"
+description = "Web API level tests and test runner"
+optional = false
+python-versions = "*"
+files = [
+    {file = "alt-0.0.4.zip", hash = "sha256:3315a3fe0716018464b2847e1ec669063ad85d7e312aac87052b123f54b8acd7"},
+]
+
+[package.dependencies]
+ddt = ">=1.0.0"
+pyyaml = ">=3.11"
+requests = ">=2.7.0"
+
+[[package]]
 name = "altair"
 version = "5.5.0"
 description = "Vega-Altair: A declarative statistical visualization library for Python."
@@ -382,6 +397,17 @@ files = [
 [package.dependencies]
 marshmallow = ">=3.18.0,<4.0.0"
 typing-inspect = ">=0.4.0,<1"
+
+[[package]]
+name = "ddt"
+version = "1.7.2"
+description = "Data-Driven/Decorated Tests"
+optional = false
+python-versions = "*"
+files = [
+    {file = "ddt-1.7.2-py2.py3-none-any.whl", hash = "sha256:6adcfaf9785f0a36f9e73a89b91e412de9ef8649e289b750e3683bc79d5e2354"},
+    {file = "ddt-1.7.2.tar.gz", hash = "sha256:d215d6b083963013c4a19b1e4dcd6a96e80e43ab77519597a6acfcf2e9a3e04b"},
+]
 
 [[package]]
 name = "distro"
@@ -2993,4 +3019,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "39a879475e2e2878c9cfb6dfbe8cde7e0ca910adfef719166802b76f57f964ed"
+content-hash = "26c0de0fbcb7d31c8423d0abc329aa2c1b6a7a278db05dfb8a87db57e675197e"

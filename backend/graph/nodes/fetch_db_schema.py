@@ -1,8 +1,8 @@
+from typing import Dict
+
 from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain_core.prompts import (
-    PromptTemplate,
-    AIMessagePromptTemplate,
     HumanMessagePromptTemplate,
 )
 from langchain_openai import ChatOpenAI
@@ -14,7 +14,7 @@ load_dotenv(find_dotenv())
 llm = ChatOpenAI(temperature=0)
 
 
-def fetch_db_schema_details(state: QueryState):
+def fetch_db_schema_details(state: QueryState) -> Dict[str, any]:
     db_config_details = state["db_config"]
     db = SQLDatabase.from_uri(
         f"postgresql://{db_config_details.get("username")}:{db_config_details.get("password")}@{db_config_details.get("host")}:{db_config_details.get("port")}/{db_config_details.get("database")}"
