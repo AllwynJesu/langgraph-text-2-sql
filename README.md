@@ -1,6 +1,6 @@
 # Text-to-SQL Generator
 
-A beginner-friendly **Text-to-SQL Generator** application that converts natural language queries into SQL statements. The project dynamically fetches database schema information on the fly and explains the data, making it an excellent learning tool for beginners exploring the fundamentals of Text-to-SQL conversion. This app supports only PostgreSQL databases
+A beginner-friendly **Text-to-SQL Generator** application that converts natural language queries into SQL statements. The project dynamically fetches database schema information on the fly and explains the data, making it an excellent learning tool for beginners exploring the fundamentals of Text-to-SQL conversion. This app supports only **PostgreSQL** databases
 
 This implementation uses **LangGraph** to process user queries, generate SQL, and explain the output data. Future iterations of this project aim to optimize the code for enhanced performance and scalability.
 
